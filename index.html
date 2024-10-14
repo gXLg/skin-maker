@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <title>Skin Maker by gXLg</title>
+
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <div id="full">
+            <div id="preview">
+                <div id="renderer"><canvas id="canvas"></canvas></div>
+                <div id="skin"><canvas id="png"></canvas></div>
+                <div id="controls">
+                    <button id="controls-reset">Reset Camera</button><br>
+                </div>
+            </div>
+            <div id="work">
+                <div id="draw"></div>
+                <div id="tools">
+                    <button id="add_color">Add Color</button>
+                    <button id="pick_color">Pick Color</button>
+                    <button id="random_color">Random Color</button>
+                </div>
+                <div id="select"></div>
+            </div>
+        </div>
+
+        <script type="importmap">
+            {
+                "imports": {
+                    "three": "https://cdn.jsdelivr.net/npm/three@v0.169.0/build/three.module.js",
+                    "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.169.0/examples/jsm/"
+                }
+            }
+        </script>
+
+        <script type="module" src="./index.js"></script>
+
+    </body>
+</html>
