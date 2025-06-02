@@ -41,7 +41,7 @@ const player = {
     "right_leg": fill(4, 12, 4)
 };
 
-function createTexture(matrix) {
+function createTexture(matrix, reversed) {
     const ysize = matrix.length;
     const xsize = matrix[0].length;
     const canvas = document.createElement("canvas");
@@ -51,7 +51,7 @@ function createTexture(matrix) {
 
     for (let row = 0; row < ysize; row++) {
         for (let col = 0; col < xsize; col++) {
-            const color = matrix[row][col];
+            const color = matrix[reversed ? ysize - row - 1 : row][col];
             if (color) {
                 ctx.fillStyle = color;
                 ctx.fillRect(col, row, 1, 1);
@@ -226,7 +226,7 @@ function render(part, face) {
 
     const [fface, i] = face.endsWith("_l") ? [face.slice(0, -2), 1] : [face, 0];
     const index = ["left", "right", "top", "bottom", "front", "back"].indexOf(fface);
-    parts[part][i].material[index].map = createTexture(matrix);
+    parts[part][i].material[index].map = createTexture(matrix, fface == "bottom");
     parts[part][i].needsUpdate = true;
 }
 const draw = document.getElementById("draw");
